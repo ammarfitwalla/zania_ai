@@ -11,6 +11,8 @@ This project implements an AI-driven bot that extracts information from a PDF do
 zania_ai/
 ├── data/
 │   └── handbook.pdf            # Sample PDF file for testing
+├── demo/                       # Demo video directory
+│   └── zania_ai_task_demo.mp4  # Demo video (.mp4)
 ├── env/                        # Virtual environment directory
 ├── src/                        # Source code directory
 │   ├── __init__.py             # Init file for source package
@@ -102,7 +104,7 @@ SLACK_BOT_TOKEN=your_slack_bot_token_here
    Execute the main script with command-line arguments for the PDF file path and questions:
 
    ```bash
-   python main.py -p data/handbook.pdf -q "What is the name of the company?; Who is the CEO of the company?"
+   python main.py -p "data/handbook.pdf" -q "What is the name of the company?; Who is the CEO of the company?"
    ```
 
 2. **Arguments**:
@@ -120,18 +122,29 @@ SLACK_BOT_TOKEN=your_slack_bot_token_here
   "Who is the CEO of the company?": "Shruti Gupta"
 }
 ```
+## Demo Video
+
+To see the AI PDF Q&A Bot in action, watch the demo video:
+
+
+[Download the demo video](demo/zania_ai_task_demo.mp4)
 
 ## Additional Notes
 
 - **Low Confidence Answers**: If the model cannot find a clear answer, it will respond with "Data Not Available."
 - **Environment File**: Ensure that `.env` is in `.gitignore` to prevent accidental exposure of API keys.
 
-## Future Improvements
+## Ways to Improve Solution Accuracy
 
-1. **Enhanced CLI**: Additional options to customize output format or specify different PDF files without modifying the command.
-2. **Logging and Error Handling**: Improved logging for easier monitoring and debugging.
-3. **Containerization with Docker**: Dockerize the application for easy deployment.
-4. **Modularization**: Further modularize code for easier testing and maintenance.
-5. **Asynchronous Processing**: Use async programming to make the bot more responsive and scalable.
+1. **Keyword-Based Filtering**: Pre-filter document sections based on keywords in the question, improving answer relevance.
+2. **Two-Pass Verification**: Use a second pass to verify or refine initial answers, reducing ambiguity.
+3. **Confidence Scoring**: Implement confidence checks based on keyword matching or response content to return reliable answers.
+4. **Summarization of Sections**: Summarize document sections to keep answers concise and relevant.
+5. **Custom QA Model**: Fine-tune an open-source QA model for domain-specific document types to improve answer precision.
 
+## Future Improvements for Modularity, Scalability, and Production Quality
+
+1. **Modular Code Structure**: Separate components like PDF parsing, Q&A, and Slack posting into individual modules for easier maintenance.
+2. **Asynchronous API Calls**: Use asynchronous programming to handle multiple requests concurrently, enhancing scalability.
+3. **Containerization with Docker**: Use Docker for a consistent setup across environments, simplifying deployment.
 ---
